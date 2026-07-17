@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "delimiter": ";",
+  "encoding": "utf-8-sig",
+  "fields": {
+    "externalId": "ID",
+    "caseNumber": "EXPEDIENTE",
+    "caption": "CARATULA",
+    "client": "CLIENTE",
+    "jurisdiction": "JURISDICCION",
+    "court": "JUZGADO",
+    "status": "ESTADO",
+    "nextDeadline": "PROXIMO_VENCIMIENTO"
+  }
+}
+

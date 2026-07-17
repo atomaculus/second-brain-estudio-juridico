@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "matters": [
+    {
+      "matterId": "matter-synthetic-001",
+      "displayName": "Persona Ejemplo c/ Empresa Demo",
+      "canonicalFolder": "D:/Estudio/Asuntos/DEMO-001",
+      "folderAliases": ["D:/Estudio/Historico/DEMO-001"],
+      "sourceSystem": "filesystem",
+      "externalIds": {"filesystem": "DEMO-001"},
+      "status": "active",
+      "confirmed": false
+    }
+  ]
+}
+

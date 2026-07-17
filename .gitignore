@@ -1,0 +1,52 @@
+# Datos vivos y confidenciales: nunca versionar
+00-inbox/**
+!00-inbox/README.md
+01-clients/**
+!01-clients/README.md
+02-matters/**
+!02-matters/README.md
+04-sales/**
+!04-sales/README.md
+06-finance/**
+!06-finance/README.md
+09-reviews/**
+!09-reviews/README.md
+10-outputs/**
+!10-outputs/README.md
+08-context/registries/*.json
+!08-context/registries/*.example.json
+
+# Credenciales, sesiones y artefactos de integraciones
+.env
+.env.*
+!.env.example
+secrets/
+**/secrets/
+browser-profile/
+**/browser-profile/
+runs/
+**/runs/
+state/
+**/state/
+downloads/
+**/downloads/
+*.token
+*.pem
+*.key
+config/*.local.json
+
+# Python / herramientas
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Obsidian local
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

@@ -1,0 +1,4 @@
+ID;EXPEDIENTE;CARATULA;CLIENTE;JURISDICCION;JUZGADO;ESTADO;PROXIMO_VENCIMIENTO
+SYN-001;DEMO-2026-001;Persona Ejemplo c/ Empresa Demo;Persona Ejemplo;Jurisdiccion Demo;Organismo Demo;Activo;2030-02-01
+SYN-002;DEMO-2026-002;Empresa Alfa c/ Persona Beta;Empresa Alfa;Jurisdiccion Demo;Organismo Demo 2;En tramite;
+

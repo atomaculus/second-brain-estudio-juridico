@@ -1,0 +1,16 @@
+{
+  "workspaceName": "Estudio juridico de ejemplo",
+  "schemaVersion": 1,
+  "canonicalRoots": [
+    "D:/Estudio/Asuntos"
+  ],
+  "matterRegistry": "08-context/registries/matter-registry.local.json",
+  "stagingDirectory": "00-inbox/integrations",
+  "defaultJurisdiction": "",
+  "sourceSystems": [
+    "filesystem"
+  ],
+  "allowCreateCanonicalFolders": false,
+  "requireDryRun": true
+}
+

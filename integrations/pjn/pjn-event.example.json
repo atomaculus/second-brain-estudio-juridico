@@ -1,0 +1,14 @@
+{
+  "sourceSystem": "pjn",
+  "externalEventId": "SYNTHETIC-EVENT-001",
+  "matterReference": "SYNTHETIC-MATTER-001",
+  "occurredAt": "2030-01-15T12:00:00Z",
+  "eventType": "synthetic-update",
+  "title": "Evento sintetico para pruebas",
+  "sourceReference": "synthetic://pjn/event/001",
+  "documentReferences": [],
+  "metadata": {
+    "synthetic": true
+  }
+}
+
