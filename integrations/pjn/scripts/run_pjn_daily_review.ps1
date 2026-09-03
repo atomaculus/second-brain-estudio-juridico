@@ -18,7 +18,8 @@ $ErrorActionPreference = "Stop"
 
 $BrainRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..\..\..")).Path
 $ScriptPath = Join-Path $PSScriptRoot "pjn_daily_review.py"
-$LogDir = Join-Path $BrainRoot "integrations\pjn\logs"
+$LocalBase = if ($env:PJN_LOCAL_STATE_DIR) { [Environment]::ExpandEnvironmentVariables($env:PJN_LOCAL_STATE_DIR) } else { Join-Path $env:LOCALAPPDATA "SegundoCerebroJuridico\PJN" }
+$LogDir = Join-Path $LocalBase "logs"
 
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 
@@ -75,6 +76,15 @@ try {
   }
 
   Write-Host "PJN daily review finished at $(Get-Date -Format s)"
+
+  try {
+    $friendlyReportScript = Join-Path $PSScriptRoot "pjn_friendly_report.py"
+    Write-Host "Generando vista simple del ultimo resultado..."
+    & $PythonCommand $friendlyReportScript
+  }
+  catch {
+    Write-Host "Generacion de vista simple fallo (no fatal): $_"
+  }
 
 }
 finally {

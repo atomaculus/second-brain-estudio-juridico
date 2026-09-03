@@ -22,7 +22,7 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-from pjn_local_paths import browser_profile_dir, token_cache_file
+from pjn_local_paths import browser_profile_dir, node_tools_dir, token_cache_file
 
 
 DEFAULT_SESSION_KEY = "oidc.user:https://sso.pjn.gov.ar/auth/realms/pjn:pjn-portal"
@@ -56,7 +56,7 @@ def node_helper_path() -> Path:
 
 
 def node_modules_bin() -> Path:
-    return lab_root() / "node-tools" / "node_modules" / ".bin"
+    return node_tools_dir() / "node_modules" / ".bin"
 
 
 def parse_args() -> argparse.Namespace:
@@ -347,7 +347,7 @@ def main() -> None:
         result = subprocess.run(
             node_cmd,
             text=True,
-            env={**os.environ, "NODE_PATH": str(lab_root() / "node-tools" / "node_modules")},
+            env={**os.environ, "NODE_PATH": str(node_tools_dir() / "node_modules")},
         )
         if result.returncode != 0:
             fail(

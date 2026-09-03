@@ -26,3 +26,15 @@ def token_cache_file() -> Path:
 
 def browser_profile_dir() -> Path:
     return local_state_dir() / "browser-profile"
+
+
+def node_tools_dir() -> Path:
+    return local_state_dir() / "node-tools"
+
+
+def runs_dir() -> Path:
+    return local_state_dir() / "runs"
+
+
+def logs_dir() -> Path:
+    return local_state_dir() / "logs"

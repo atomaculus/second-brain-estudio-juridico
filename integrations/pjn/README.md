@@ -23,7 +23,19 @@ Desde la raiz del repositorio:
 integrations\pjn\scripts\setup_pjn_local.ps1
 ```
 
-La sesion se guarda por defecto fuera del repositorio en `%LOCALAPPDATA%\SegundoCerebroJuridico\PJN`. Puede cambiarse con `PJN_LOCAL_STATE_DIR`.
+En Windows tambien puede ejecutarse con doble clic el instalador portable:
+
+```text
+integrations\pjn\INSTALAR PJN EN ESTA PC.bat
+```
+
+Comprueba o instala los requisitos, prepara Playwright fuera del repositorio,
+ejecuta pruebas y crea accesos directos para iniciar la revision, ver el ultimo
+resultado y reparar componentes. No registra tareas programadas.
+
+La sesion, dependencias, corridas crudas y logs se guardan por defecto fuera del
+repositorio en `%LOCALAPPDATA%\SegundoCerebroJuridico\PJN`. Puede cambiarse con
+`PJN_LOCAL_STATE_DIR`.
 
 ## Configuracion
 
@@ -69,7 +81,9 @@ Despues de revisar configuracion y resultados, habilitar escrituras expresamente
 integrations\pjn\scripts\run_pjn_assisted_review.ps1 -Apply
 ```
 
-Las corridas, estado y logs se guardan dentro de `integrations/pjn/` en carpetas ignoradas por Git.
+Las corridas crudas quedan en el almacenamiento local de cada PC. El informe
+legible continúa en `09-reviews/pjn/` y puede abrirse con el acceso directo
+`PJN - Ver ultimo resultado`. No copiar `runs`, tokens o perfiles entre PCs.
 
 ## Pruebas
 

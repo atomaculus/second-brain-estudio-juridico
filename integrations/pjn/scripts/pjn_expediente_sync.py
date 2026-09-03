@@ -24,7 +24,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from pjn_local_paths import token_cache_file
+from pjn_local_paths import runs_dir, token_cache_file
 
 
 BASE_URL = "https://notif.pjn.gov.ar/api"
@@ -357,8 +357,9 @@ def select_matters(args: argparse.Namespace) -> list[dict[str, Any]]:
 
 def run_dir_for(matter: dict[str, Any]) -> Path:
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    run_dir = lab_root() / "runs" / str(matter["matterId"]) / timestamp
-    ensure_inside(run_dir, lab_root(), "PJN lab")
+    local_runs = runs_dir()
+    run_dir = local_runs / str(matter["matterId"]) / timestamp
+    ensure_inside(run_dir, local_runs, "PJN local runs")
     (run_dir / "raw").mkdir(parents=True, exist_ok=False)
     (run_dir / "pdf").mkdir(parents=True, exist_ok=True)
     (run_dir / "text").mkdir(parents=True, exist_ok=True)
@@ -556,7 +557,7 @@ def adopt_legacy_pdf_indexes(matter: dict[str, Any], state: dict[str, Any]) -> i
     if state.get("despachos"):
         return 0
     adopted = 0
-    matter_runs = lab_root() / "runs" / str(matter["matterId"])
+    matter_runs = runs_dir() / str(matter["matterId"])
     if not matter_runs.exists():
         return 0
     for index_path in matter_runs.glob("*/raw/pdf-index.json"):

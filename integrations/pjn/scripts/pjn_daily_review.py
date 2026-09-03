@@ -17,7 +17,7 @@ import time
 from pathlib import Path
 from typing import Any
 
-from pjn_local_paths import token_cache_file
+from pjn_local_paths import node_tools_dir, token_cache_file
 
 
 def script_dir() -> Path:
@@ -204,7 +204,9 @@ def main() -> None:
             if args.scw_keep_open_on_error:
                 scw_cmd.append("--keep-open-on-error")
                 scw_cmd.extend(["--error-pause-sec", str(args.scw_error_pause_sec)])
-            result = subprocess.run(scw_cmd, text=True)
+            scw_env = os.environ.copy()
+            scw_env["NODE_PATH"] = str(node_tools_dir() / "node_modules")
+            result = subprocess.run(scw_cmd, text=True, env=scw_env)
             scw_reports.append(
                 {
                     "matterId": matter.get("matterId"),

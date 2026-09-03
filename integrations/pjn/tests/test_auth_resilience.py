@@ -85,6 +85,9 @@ class AuthResilienceTests(unittest.TestCase):
         with patch.dict(os.environ, {"PJN_LOCAL_STATE_DIR": str(expected)}):
             self.assertEqual(local_paths.local_state_dir(), expected)
             self.assertEqual(local_paths.token_cache_file(), expected / "pjn-token-cache.json")
+            self.assertEqual(local_paths.node_tools_dir(), expected / "node-tools")
+            self.assertEqual(local_paths.runs_dir(), expected / "runs")
+            self.assertEqual(local_paths.logs_dir(), expected / "logs")
 
     def test_relative_canonical_folder_is_workspace_relative(self) -> None:
         configured = {"canonicalFolder": "data/matters/demo"}

@@ -26,7 +26,7 @@ function parseArgs(argv) {
     headed: false,
     timeoutSec: 180,
     profileDir: path.join(localStateRoot(), "browser-profile"),
-    outDir: path.join(labRoot(), "runs", "scw-favoritos", timestamp()),
+    outDir: path.join(localStateRoot(), "runs", "scw-favoritos", timestamp()),
   };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];

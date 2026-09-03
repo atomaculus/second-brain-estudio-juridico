@@ -5,8 +5,15 @@ param(
 $ErrorActionPreference = "Stop"
 
 $LabRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
-$NodeTools = Join-Path $LabRoot "node-tools"
-$PackageLock = Join-Path $NodeTools "package-lock.json"
+$SourceNodeTools = Join-Path $LabRoot "node-tools"
+$SourcePackageJson = Join-Path $SourceNodeTools "package.json"
+$SourcePackageLock = Join-Path $SourceNodeTools "package-lock.json"
+$LocalBase = if ($env:PJN_LOCAL_STATE_DIR) {
+  [Environment]::ExpandEnvironmentVariables($env:PJN_LOCAL_STATE_DIR)
+} else {
+  Join-Path $env:LOCALAPPDATA "SegundoCerebroJuridico\PJN"
+}
+$NodeTools = Join-Path $LocalBase "node-tools"
 
 function Require-Command {
   param([string]$Name)
@@ -39,9 +46,13 @@ if ($hasPdftotext) {
   Write-Host "pdftotext no esta instalado. Se usara el extractor Python (pypdf). Opcional: instalar Poppler para mejor calidad."
 }
 
-if (-not (Test-Path -LiteralPath $PackageLock)) {
-  throw "Falta $PackageLock; no se puede hacer una instalacion reproducible."
+if (-not (Test-Path -LiteralPath $SourcePackageJson) -or -not (Test-Path -LiteralPath $SourcePackageLock)) {
+  throw "Faltan los manifiestos Node; no se puede hacer una instalacion reproducible."
 }
+
+New-Item -ItemType Directory -Force -Path $NodeTools | Out-Null
+Copy-Item -LiteralPath $SourcePackageJson -Destination (Join-Path $NodeTools "package.json") -Force
+Copy-Item -LiteralPath $SourcePackageLock -Destination (Join-Path $NodeTools "package-lock.json") -Force
 
 Push-Location -LiteralPath $NodeTools
 try {
@@ -65,4 +76,5 @@ finally {
 }
 
 Write-Host "Instalacion local PJN completada."
+Write-Host "Dependencias Node locales: $NodeTools"
 Write-Host "Playwright de Python es opcional: el capturador usa el fallback Node instalado."

@@ -22,7 +22,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from pjn_local_paths import token_cache_file
+from pjn_local_paths import runs_dir, token_cache_file
 
 
 BASE_URL = "https://notif.pjn.gov.ar/api"
@@ -266,7 +266,7 @@ def main() -> None:
     registry = read_json(args.registry, {"matters": []})
     token = load_token(args)
     route_changed = False
-    run_dir = lab_root() / "runs" / "resolve-expediente-ids" / datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_dir = runs_dir() / "resolve-expediente-ids" / datetime.now().strftime("%Y%m%d-%H%M%S")
     raw_dir = run_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=False)
 

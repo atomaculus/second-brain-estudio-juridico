@@ -8,6 +8,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from pjn_local_paths import node_tools_dir
+
 
 def lab_root() -> Path:
     return Path(__file__).resolve().parents[1]
@@ -16,7 +18,7 @@ def lab_root() -> Path:
 def main() -> None:
     script = Path(__file__).with_suffix(".js")
     env = os.environ.copy()
-    env["NODE_PATH"] = str(lab_root() / "node-tools" / "node_modules")
+    env["NODE_PATH"] = str(node_tools_dir() / "node_modules")
     result = subprocess.run(["node", str(script), *sys.argv[1:]], env=env, text=True)
     raise SystemExit(result.returncode)
 

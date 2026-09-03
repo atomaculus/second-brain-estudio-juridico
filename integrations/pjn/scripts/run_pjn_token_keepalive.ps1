@@ -13,7 +13,8 @@ $hasLock = $false
 
 $BrainRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..\..\..")).Path
 $ScriptPath = Join-Path $PSScriptRoot "pjn_browser_token.py"
-$LogDir = Join-Path $BrainRoot "integrations\pjn\logs"
+$LocalBase = if ($env:PJN_LOCAL_STATE_DIR) { [Environment]::ExpandEnvironmentVariables($env:PJN_LOCAL_STATE_DIR) } else { Join-Path $env:LOCALAPPDATA "SegundoCerebroJuridico\PJN" }
+$LogDir = Join-Path $LocalBase "logs"
 
 New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
 

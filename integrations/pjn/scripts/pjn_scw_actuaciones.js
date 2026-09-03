@@ -17,7 +17,7 @@ function requirePlaywright() {
   try {
     return require("playwright");
   } catch (error) {
-    return require(path.join(labRoot(), "node-tools", "node_modules", "playwright"));
+    return require(path.join(localStateRoot(), "node-tools", "node_modules", "playwright"));
   }
 }
 
@@ -396,7 +396,7 @@ async function writeDebugArtifacts(outDir, page, error) {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const matter = findMatter(args.registry, args.matterId);
-  const outDir = args.outDir || path.join(labRoot(), "runs", matter.matterId, timestamp(), "scw");
+  const outDir = args.outDir || path.join(localStateRoot(), "runs", matter.matterId, timestamp(), "scw");
   fs.mkdirSync(outDir, { recursive: true });
 
   const context = await chromium.launchPersistentContext(args.profileDir, {
