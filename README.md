@@ -51,7 +51,8 @@ python tools/validate_workspace.py --root .
 - **Carpetas existentes:** registrar cada carpeta actual y resolver duplicados sin mover archivos inicialmente.
 - **Estructura nueva:** crear carpetas canonicas desde el registro de asuntos.
 - **LexDoctor:** importar un CSV exportado por el usuario mediante un mapa configurable de columnas.
-- **PJN u otro portal:** implementar un adaptador autorizado que genere eventos normalizados en staging; este repositorio no incluye credenciales, perfiles de navegador ni tecnicas de extraccion de sesiones.
+- **PJN:** usar la integracion opcional en `integrations/pjn/`, con sesiones locales fuera de Git y modo simulacion predeterminado.
+- **Otros portales:** implementar un adaptador autorizado que genere eventos normalizados en staging.
 
 Consultar [arquitectura](docs/architecture.md), [carpeta canonica](docs/canonical-folder.md), [adaptacion](docs/adapting-an-office.md), [LexDoctor](docs/lexdoctor.md) y [PJN](docs/pjn.md).
 

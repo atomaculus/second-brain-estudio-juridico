@@ -8,6 +8,12 @@
       "folderAliases": ["D:/Estudio/Historico/DEMO-001"],
       "sourceSystem": "filesystem",
       "externalIds": {"filesystem": "DEMO-001"},
+      "fuero": "CIV",
+      "numero": 1,
+      "anio": 2099,
+      "pjnExpedienteId": 999999999,
+      "pjnSync": {"enabled": false},
+      "publishPjnDownloads": false,
       "status": "active",
       "confirmed": false
     }

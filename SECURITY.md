@@ -15,6 +15,7 @@ Las carpetas operativas sensibles estan ignoradas por Git. Si el estudio necesit
 - No persistir tokens de sesion, cookies o perfiles de navegador dentro del vault.
 - Ejecutar importaciones en `dry-run` y staging antes de aplicar cambios.
 - No asumir que una operacion de lectura carece de efectos procesales: verificarlo con la fuente oficial y el responsable del estudio.
+- La integracion PJN bloquea endpoints conocidos asociados a lectura de notificaciones y exige `--apply` para publicar o actualizar estado. Estas defensas no reemplazan la verificacion periodica del portal.
 
 ## Reportes
 
