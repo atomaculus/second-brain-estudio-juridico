@@ -30,6 +30,7 @@ state/
 **/state/
 downloads/
 **/downloads/
+**/logs/
 *.token
 *.pem
 *.key
@@ -41,6 +42,7 @@ __pycache__/
 .pytest_cache/
 .venv/
 venv/
+**/node_modules/
 
 # Obsidian local
 .obsidian/workspace*.json
